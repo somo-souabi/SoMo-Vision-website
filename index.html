@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoMo Vision</title>
+  <meta name="description" content="SoMo Vision brings together purposeful ventures in education, mobility, and Mediterranean catering." />
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --paper: #ffffff;
+      --surface: #f6f8fb;
+      --line: rgba(23, 32, 51, 0.1);
+      --brand: #365cff;
+      --brand-dark: #172033;
+      --gold: #f4b740;
+      --terracotta: #d96d42;
+      --teal: #10a4a6;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(54, 92, 255, 0.14), transparent 32rem),
+        linear-gradient(180deg, #fbfcff 0%, var(--surface) 100%);
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+
+    .logo-fallback {
+      display: none;
+      width: 52px;
+      height: 52px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      color: white;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      background: linear-gradient(135deg, var(--brand), var(--teal));
+      box-shadow: 0 16px 34px rgba(54, 92, 255, 0.22);
+    }
+
+    .brand-name {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.3rem);
+      line-height: 0.94;
+      letter-spacing: -0.08em;
+      max-width: 780px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      max-width: 630px;
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 30px 90px rgba(23, 32, 51, 0.1);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -30%;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(244, 183, 64, 0.22);
+      filter: blur(8px);
+    }
+
+    .stat-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 22px;
+      border-radius: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      letter-spacing: -0.06em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.06em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .business-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 100%;
+      border-radius: 30px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px rgba(23, 32, 51, 0.08);
+    }
+
+    .media {
+      position: relative;
+      min-height: 250px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .media img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-fallback {
+      display: none;
+      min-height: 250px;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: white;
+      text-align: center;
+      background: linear-gradient(135deg, #2f5cff, #10a4a6);
+    }
+
+    .placeholder {
+      display: flex;
+      min-height: 250px;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      color: white;
+      overflow: hidden;
+    }
+
+    .mobility-placeholder {
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.24), transparent 10rem),
+        linear-gradient(135deg, #121a2f 0%, #253f75 54%, #5f7dff 100%);
+    }
+
+    .tapas-placeholder {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.28), transparent 9rem),
+        linear-gradient(135deg, #7a2f21 0%, #d96d42 54%, #f4b740 100%);
+    }
+
+    .placeholder-art {
+      position: relative;
+      width: min(210px, 90%);
+      aspect-ratio: 1.25;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 24px 50px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .placeholder-art svg {
+      width: 72%;
+      height: 72%;
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.18));
+    }
+
+    .placeholder-label {
+      position: absolute;
+      left: 22px;
+      bottom: 18px;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 1.2rem;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 26px;
+      flex: 1;
+    }
+
+    .card-body h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: -0.05em;
+    }
+
+    .card-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .pill {
+      align-self: flex-start;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(54, 92, 255, 0.09);
+      color: var(--brand-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .business-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header,
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="brand" aria-label="SoMo Vision">
+        <img src="somovision-logo.png" alt="SoMo Vision logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <span class="logo-fallback" aria-hidden="true">SV</span>
+        <p class="brand-name">SoMo Vision</p>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Business portfolio</p>
+        <h1 id="hero-title">Purposeful ventures with a polished vision.</h1>
+        <p>SoMo Vision connects education, mobility, and hospitality concepts under one clear platform built to grow with the right visuals available today.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Portfolio highlights">
+        <div class="stat-grid">
+          <div class="stat"><strong>3</strong><span>business concepts</span></div>
+          <div class="stat"><strong>0</strong><span>broken external image dependencies</span></div>
+          <div class="stat"><strong>2</strong><span>CSS-built premium placeholders</span></div>
+          <div class="stat"><strong>1</strong><span>real Kids Path image slot</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section aria-labelledby="businesses-title">
+      <div class="section-heading">
+        <h2 id="businesses-title">Our businesses</h2>
+        <p>Each card is designed to look complete even before dedicated SoMo Cars or Tapas del Día photography is added.</p>
+      </div>
+
+      <div class="business-grid">
+        <article class="business-card">
+          <div class="media">
+            <img src="images/kidspath2.jpg" alt="Kids Path 2 Engineering learning experience" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="image-fallback" aria-hidden="true">
+              <strong>Kids Path 2 Engineering</strong>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="pill">Education</span>
+            <h3>Kids Path 2 Engineering</h3>
+            <p>A real image slot for hands-on learning and early engineering inspiration, using the local file at <code>images/kidspath2.jpg</code>.</p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="placeholder mobility-placeholder" role="img" aria-label="Premium mobility placeholder for SoMo Cars">
+            <div class="placeholder-art">
+              <svg viewBox="0 0 180 120" aria-hidden="true" focusable="false">
+                <path d="M34 76 L51 49 C56 41 65 36 75 36 H107 C117 36 126 41 132 49 L150 76" fill="none" stroke="rgba(255,255,255,.88)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M27 76 H153 C161 76 167 82 167 90 V96 H13 V90 C13 82 19 76 27 76Z" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.78)" stroke-width="5" stroke-linejoin="round" />
+                <circle cx="48" cy="96" r="12" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="6" />
+                <circle cx="132" cy="96" r="12" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="6" />
+                <path d="M76 50 H105" stroke="rgba(255,255,255,.68)" stroke-width="5" stroke-linecap="round" />
+              </svg>
+              <p class="placeholder-label">Mobility</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="pill">Used cars</span>
+            <h3>SoMo Cars</h3>
+            <p>A clean CSS-only visual with a premium mobility feel, avoiding temporary real car imagery and any dependency on somocars.be assets.</p>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="placeholder tapas-placeholder" role="img" aria-label="Warm catering placeholder for Tapas del Día">
+            <div class="placeholder-art">
+              <svg viewBox="0 0 180 120" aria-hidden="true" focusable="false">
+                <circle cx="90" cy="66" r="38" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.86)" stroke-width="6" />
+                <circle cx="90" cy="66" r="21" fill="none" stroke="rgba(255,255,255,.44)" stroke-width="5" />
+                <path d="M42 32 C49 45 49 58 42 72" fill="none" stroke="rgba(255,255,255,.86)" stroke-width="5" stroke-linecap="round" />
+                <path d="M138 32 V77" stroke="rgba(255,255,255,.86)" stroke-width="5" stroke-linecap="round" />
+                <path d="M128 32 V52 M138 32 V52 M148 32 V52" stroke="rgba(255,255,255,.86)" stroke-width="4" stroke-linecap="round" />
+                <path d="M72 63 L82 54 L94 61 L106 52" fill="none" stroke="rgba(255,255,255,.72)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <p class="placeholder-label">Catering</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="pill">Mediterranean food</span>
+            <h3>Tapas del Día</h3>
+            <p>A warm CSS-only catering visual inspired by Mediterranean plates and tapas, with no dependency on tapasdeldia.com images.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
