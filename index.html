@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoMo Vision</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">SoMo Vision</p>
+      <h1 id="hero-title">Building thoughtful local brands with clean digital experiences.</h1>
+      <p class="hero-copy">Explore current projects or reach out to connect with the SoMo Vision team.</p>
+    </section>
+
+    <section class="business-grid" aria-label="SoMo Vision businesses">
+      <a class="business-card kids-path-card" href="https://www.kidspath2engineering.com/" target="_blank" rel="noopener noreferrer">
+        <div class="business-media kids-path-media">
+          <img src="images/kidspath2.jpg" alt="Kids Path 2 Engineering" onerror="this.hidden = true; this.nextElementSibling.hidden = false;">
+          <div class="image-fallback" hidden>Kids Path 2 Engineering</div>
+        </div>
+        <div class="business-content">
+          <h2>Kids Path 2 Engineering</h2>
+          <p>Hands-on engineering education for curious young builders.</p>
+        </div>
+      </a>
+
+      <a class="business-card somo-cars-card" href="https://somocars.com/" target="_blank" rel="noopener noreferrer">
+        <div class="business-media css-placeholder" aria-hidden="true">
+          <span>SoMo Cars</span>
+        </div>
+        <div class="business-content">
+          <h2>SoMo Cars</h2>
+          <p>A polished automotive concept for local drivers.</p>
+        </div>
+      </a>
+
+      <a class="business-card tapas-card" href="https://tapasdeldia.com/" target="_blank" rel="noopener noreferrer">
+        <div class="business-media css-placeholder" aria-hidden="true">
+          <span>Tapas del Día</span>
+        </div>
+        <div class="business-content">
+          <h2>Tapas del Día</h2>
+          <p>A warm food brand with daily Spanish-inspired flavor.</p>
+        </div>
+      </a>
+    </section>
+
+    <section class="contact-panel" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact SoMo Vision</h2>
+      <form id="contact-form" novalidate>
+        <label>
+          Name
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          Email
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </label>
+        <label>
+          Message
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit">Send message</button>
+        <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
