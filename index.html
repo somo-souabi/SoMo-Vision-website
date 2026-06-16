@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoMo Vision | One vision. Multiple paths.</title>
+  <meta
+    name="description"
+    content="SoMo Vision brings together education, mobility, and Spanish food experiences under one clear parent brand."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="SoMo Vision home">
+        <img src="somovision-logo.png" alt="SoMo Vision logo" class="brand-logo" />
+        <span>SoMo Vision</span>
+      </a>
+      <div class="nav-links">
+        <a href="#businesses">Businesses</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">SoMo Vision</p>
+        <h1 id="hero-title">One vision. Multiple paths.</h1>
+        <p class="hero-text">
+          SoMo Vision brings together education, mobility, and Spanish food experiences under one clear parent brand.
+          From here, visitors can easily discover the right SoMo business.
+        </p>
+        <a class="primary-action" href="#businesses">Explore our businesses</a>
+      </div>
+      <div class="hero-stats" aria-label="SoMo Vision highlights">
+        <div>
+          <strong>3</strong>
+          <span>Businesses</span>
+        </div>
+        <div>
+          <strong>1</strong>
+          <span>Shared vision</span>
+        </div>
+        <div>
+          <strong>Growing</strong>
+          <span>Opportunities</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="businesses" id="businesses" aria-labelledby="businesses-title">
+      <div class="section-heading">
+        <p class="eyebrow">Our businesses</p>
+        <h2 id="businesses-title">Find the right SoMo experience.</h2>
+        <p>Each business has a clear focus, a dedicated website, and a friendly path for visitors to learn more.</p>
+      </div>
+      <div class="business-grid">
+        <a class="business-card" href="https://kidspath2.ing/" target="_blank" rel="noopener noreferrer">
+          <div class="card-media image-card kids-path-media">
+            <div class="kids-path-fallback" aria-hidden="true">
+              <span>Kids Path 2 Engineering</span>
+            </div>
+            <img
+              src="images/kidspath2.jpg"
+              alt="Kids Path 2 Engineering learning session"
+              onerror="this.classList.add('is-hidden'); this.setAttribute('aria-hidden', 'true');"
+            />
+          </div>
+          <div class="card-content">
+            <p class="card-kicker">Education</p>
+            <h3>Kids Path 2 Engineering</h3>
+            <p>Hands-on learning that helps children discover technology, creativity, and engineering skills.</p>
+            <span class="visit-link">Visit kidspath2.ing</span>
+          </div>
+        </a>
+
+        <a class="business-card" href="https://somocars.be/" target="_blank" rel="noopener noreferrer">
+          <div class="card-media placeholder-card cars-placeholder" aria-hidden="true">
+            <span>SoMo Cars</span>
+          </div>
+          <div class="card-content">
+            <p class="card-kicker">Cars</p>
+            <h3>SoMo Cars</h3>
+            <p>A dedicated mobility destination for visitors interested in reliable car services and opportunities.</p>
+            <span class="visit-link">Visit somocars.be</span>
+          </div>
+        </a>
+
+        <a class="business-card" href="https://tapasdeldia.com/" target="_blank" rel="noopener noreferrer">
+          <div class="card-media placeholder-card tapas-placeholder" aria-hidden="true">
+            <span>Tapas del Día</span>
+          </div>
+          <div class="card-content">
+            <p class="card-kicker">Catering</p>
+            <h3>Tapas del Día</h3>
+            <p>Spanish food experiences and catering moments created for gatherings, celebrations, and events.</p>
+            <span class="visit-link">Visit tapasdeldia.com</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">The parent brand behind focused businesses.</h2>
+      </div>
+      <p>
+        SoMo Vision connects different activities under one professional identity. Each business has its own audience,
+        website and purpose, while SoMo Vision gives visitors one central place to understand the full ecosystem.
+      </p>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let’s stay connected.</h2>
+        <p>Send a message or join future SoMo Vision updates.</p>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit">Submit</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="current-year"></span> SoMo Vision. All rights reserved.</p>
+    <p>Education · Cars · Catering</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
