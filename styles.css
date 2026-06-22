@@ -11,9 +11,12 @@
   --muted-light: #d7c9ab;
   --gold: #c99a3d;
   --gold-deep: #8d6420;
+  --orange: #ff7a18;
+  --orange-bright: #ff8c1a;
+  --orange-deep: #f97316;
   --orange-gold: #dc812a;
   --border: rgba(31, 26, 18, 0.12);
-  --hero-border: rgba(226, 184, 93, 0.2);
+  --hero-border: rgba(255, 122, 24, 0.24);
   --radius: 28px;
   --shadow: 0 20px 48px rgba(48, 35, 17, 0.14);
   --shadow-soft: 0 10px 28px rgba(48, 35, 17, 0.1);
@@ -57,7 +60,7 @@ a {
 .nav {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 0.9rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +71,7 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 
 .brand {
@@ -79,8 +82,8 @@ a {
 }
 
 .brand-logo {
-  width: 46px;
-  height: 46px;
+  width: clamp(58px, 6vw, 76px);
+  height: clamp(58px, 6vw, 76px);
   object-fit: contain;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.24));
 }
@@ -107,11 +110,11 @@ main {
 
 .hero-shell {
   background:
-    radial-gradient(circle at 12% 18%, rgba(220, 129, 42, 0.2), transparent 25rem),
-    radial-gradient(circle at 82% 10%, rgba(201, 154, 61, 0.18), transparent 24rem),
+    radial-gradient(circle at 12% 18%, rgba(255, 122, 24, 0.24), transparent 25rem),
+    radial-gradient(circle at 82% 10%, rgba(249, 115, 22, 0.18), transparent 24rem),
     linear-gradient(135deg, #080706 0%, var(--hero) 52%, var(--hero-soft) 100%);
   color: #fff8e8;
-  border-bottom: 1px solid rgba(141, 100, 32, 0.24);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.28);
 }
 
 .hero,
@@ -142,7 +145,7 @@ main {
 
 .hero .eyebrow,
 .under-construction .eyebrow {
-  color: #e7bd63;
+  color: var(--orange-bright);
 }
 
 h1,
@@ -188,13 +191,29 @@ h3 {
   border: 0;
   border-radius: 999px;
   padding: 0.95rem 1.35rem;
+  position: relative;
+  overflow: hidden;
   color: #130f08;
   background: linear-gradient(135deg, #f1c66a, var(--orange-gold));
   font-weight: 850;
   text-decoration: none;
   box-shadow: 0 12px 26px rgba(141, 100, 32, 0.2);
   cursor: pointer;
+  isolation: isolate;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.primary-action::after,
+.contact-form button::after {
+  position: absolute;
+  inset: -45% auto -45% -70%;
+  z-index: 0;
+  width: 55%;
+  content: "";
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.18) 42%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.18) 58%, transparent 100%);
+  filter: blur(1px);
+  transform: skewX(-18deg);
+  transition: left 520ms ease;
 }
 
 .primary-action:hover,
@@ -202,9 +221,16 @@ h3 {
 .primary-action:focus-visible,
 .contact-form button:focus-visible {
   background: linear-gradient(135deg, #f6d27d, var(--gold));
-  box-shadow: 0 16px 32px rgba(141, 100, 32, 0.25);
+  box-shadow: 0 16px 34px rgba(201, 154, 61, 0.32), 0 0 22px rgba(255, 140, 26, 0.16);
   transform: translateY(-1px);
   outline: none;
+}
+
+.primary-action:hover::after,
+.contact-form button:hover::after,
+.primary-action:focus-visible::after,
+.contact-form button:focus-visible::after {
+  left: 120%;
 }
 
 .hero-stats {
@@ -222,7 +248,7 @@ h3 {
 
 .hero-stats strong {
   display: block;
-  color: #f1c66a;
+  color: var(--orange-bright);
   font-size: clamp(2.25rem, 5vw, 4rem);
   line-height: 1;
 }
@@ -230,6 +256,23 @@ h3 {
 .hero-stats span {
   color: var(--muted-light);
   font-weight: 800;
+}
+
+.hero-logo-card {
+  display: grid;
+  min-height: clamp(12rem, 24vw, 17rem);
+  place-items: center;
+  padding: clamp(1.3rem, 3vw, 2rem);
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 140, 26, 0.2), transparent 62%),
+    rgba(255, 248, 232, 0.075);
+}
+
+.hero-logo-card img {
+  width: min(100%, clamp(13rem, 24vw, 20rem));
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.34));
 }
 
 .businesses-shell,
@@ -441,7 +484,8 @@ h3 {
 .under-construction-shell {
   min-height: calc(100vh - 9rem);
   background:
-    radial-gradient(circle at 14% 18%, rgba(220, 129, 42, 0.18), transparent 24rem),
+    radial-gradient(circle at 14% 18%, rgba(255, 122, 24, 0.22), transparent 24rem),
+    radial-gradient(circle at 82% 14%, rgba(249, 115, 22, 0.14), transparent 22rem),
     linear-gradient(135deg, #080706 0%, var(--hero) 55%, #21170d 100%);
   color: #fff8e8;
 }
@@ -494,8 +538,12 @@ h3 {
 
 @media (max-width: 480px) {
   .brand-logo {
-    width: 38px;
-    height: 38px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .brand span {
+    font-size: 0.98rem;
   }
 
   .nav-links a {
