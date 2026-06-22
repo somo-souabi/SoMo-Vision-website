@@ -427,3 +427,15 @@ h3 {
     padding: 1.15rem;
   }
 }
+
+.under-construction-media {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 18rem;
+}
+
+.under-construction-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
