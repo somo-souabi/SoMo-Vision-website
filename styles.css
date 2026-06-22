@@ -1,13 +1,22 @@
 :root {
-  --bg: #0b0906;
-  --surface: #16110a;
-  --ink: #f8efd8;
-  --muted: #c8b98d;
-  --brand: #d6a84f;
-  --brand-dark: #a87924;
-  --accent: #f0c96b;
-  --border: rgba(240, 201, 107, 0.2);
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.32);
+  --page: #f7f2e9;
+  --page-alt: #efe6d8;
+  --hero: #11100d;
+  --hero-soft: #1d1710;
+  --surface: #fffdf8;
+  --surface-warm: #fbf6ec;
+  --ink: #171512;
+  --ink-soft: #403a32;
+  --muted: #6c6255;
+  --muted-light: #d7c9ab;
+  --gold: #c99a3d;
+  --gold-deep: #8d6420;
+  --orange-gold: #dc812a;
+  --border: rgba(31, 26, 18, 0.12);
+  --hero-border: rgba(226, 184, 93, 0.2);
+  --radius: 28px;
+  --shadow: 0 20px 48px rgba(48, 35, 17, 0.14);
+  --shadow-soft: 0 10px 28px rgba(48, 35, 17, 0.1);
 }
 
 * {
@@ -22,7 +31,7 @@ body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top left, rgba(240, 201, 107, 0.2), transparent 32rem), linear-gradient(135deg, #050403 0%, var(--bg) 48%, #1b1308 100%);
+  background: linear-gradient(180deg, var(--page) 0%, #fbf8f1 52%, var(--page-alt) 100%);
   line-height: 1.6;
 }
 
@@ -39,15 +48,16 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(11, 9, 6, 0.9);
+  background: rgba(17, 16, 13, 0.94);
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--hero-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
 .nav {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
+  padding: 0.9rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,30 +72,46 @@ a {
 }
 
 .brand {
+  color: #fff8e8;
   font-weight: 800;
   text-decoration: none;
   letter-spacing: -0.02em;
 }
 
 .brand-logo {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.24));
 }
 
 .nav-links a {
+  border-radius: 999px;
+  color: var(--muted-light);
+  font-weight: 750;
+  padding: 0.45rem 0.7rem;
   text-decoration: none;
-  font-weight: 700;
-  color: var(--muted);
-  transition: color 180ms ease;
+  transition: background 180ms ease, color 180ms ease;
 }
 
-.nav-links a:hover {
-  color: var(--brand);
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff8e8;
+  outline: none;
 }
 
 main {
   overflow: hidden;
+}
+
+.hero-shell {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(220, 129, 42, 0.2), transparent 25rem),
+    radial-gradient(circle at 82% 10%, rgba(201, 154, 61, 0.18), transparent 24rem),
+    linear-gradient(135deg, #080706 0%, var(--hero) 52%, var(--hero-soft) 100%);
+  color: #fff8e8;
+  border-bottom: 1px solid rgba(141, 100, 32, 0.24);
 }
 
 .hero,
@@ -94,7 +120,7 @@ main {
 .contact {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 5rem 1.25rem;
+  padding: 5.5rem 1.25rem;
 }
 
 .hero {
@@ -107,11 +133,16 @@ main {
 
 .eyebrow {
   margin: 0 0 0.75rem;
-  color: var(--brand);
-  font-size: 0.8rem;
+  color: var(--gold-deep);
+  font-size: 0.78rem;
   font-weight: 900;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.hero .eyebrow,
+.under-construction .eyebrow {
+  color: #e7bd63;
 }
 
 h1,
@@ -128,18 +159,25 @@ h1 {
 }
 
 h2 {
+  color: var(--ink);
   font-size: clamp(2rem, 5vw, 3.7rem);
 }
 
+.hero h1,
+.under-construction h1 {
+  color: #fff8e8;
+}
+
 h3 {
-  font-size: 1.65rem;
+  color: var(--ink);
+  font-size: 1.55rem;
 }
 
 .hero-text {
   max-width: 690px;
   margin: 1.5rem 0 2rem;
+  color: var(--muted-light);
   font-size: clamp(1.1rem, 2vw, 1.35rem);
-  color: var(--muted);
 }
 
 .primary-action,
@@ -150,17 +188,23 @@ h3 {
   border: 0;
   border-radius: 999px;
   padding: 0.95rem 1.35rem;
-  color: #090704;
-  background: linear-gradient(135deg, var(--accent), var(--brand));
-  font-weight: 800;
+  color: #130f08;
+  background: linear-gradient(135deg, #f1c66a, var(--orange-gold));
+  font-weight: 850;
   text-decoration: none;
-  box-shadow: 0 14px 34px rgba(214, 168, 79, 0.24);
+  box-shadow: 0 12px 26px rgba(141, 100, 32, 0.2);
   cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 .primary-action:hover,
-.contact-form button:hover {
-  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+.contact-form button:hover,
+.primary-action:focus-visible,
+.contact-form button:focus-visible {
+  background: linear-gradient(135deg, #f6d27d, var(--gold));
+  box-shadow: 0 16px 32px rgba(141, 100, 32, 0.25);
+  transform: translateY(-1px);
+  outline: none;
 }
 
 .hero-stats {
@@ -170,22 +214,32 @@ h3 {
 
 .hero-stats div {
   padding: 1.5rem;
-  background: rgba(22, 17, 10, 0.82);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
+  background: rgba(255, 248, 232, 0.08);
+  border: 1px solid var(--hero-border);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
 }
 
 .hero-stats strong {
   display: block;
+  color: #f1c66a;
   font-size: clamp(2.25rem, 5vw, 4rem);
   line-height: 1;
-  color: var(--brand);
 }
 
 .hero-stats span {
-  color: var(--muted);
+  color: var(--muted-light);
   font-weight: 800;
+}
+
+.businesses-shell,
+.contact-shell {
+  background: var(--page);
+}
+
+.about-shell {
+  background: linear-gradient(180deg, var(--page-alt), #f8f2e7);
+  border-block: 1px solid rgba(31, 26, 18, 0.08);
 }
 
 .section-heading {
@@ -201,7 +255,7 @@ h3 {
 .business-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .business-card {
@@ -213,14 +267,14 @@ h3 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 30px;
-  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.22);
+  box-shadow: var(--shadow-soft);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .business-card:hover,
 .business-card:focus-visible {
   transform: translateY(-6px);
-  border-color: rgba(37, 71, 208, 0.35);
+  border-color: rgba(201, 154, 61, 0.45);
   box-shadow: var(--shadow);
   outline: none;
 }
@@ -228,6 +282,8 @@ h3 {
 .card-media {
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: #e7dccb;
+  border-bottom: 1px solid var(--border);
 }
 
 .image-card img {
@@ -262,7 +318,9 @@ h3 {
   display: none;
 }
 
-.placeholder-card {
+.placeholder-card,
+.cars-placeholder,
+.tapas-placeholder {
   display: grid;
   place-items: center;
   color: white;
@@ -289,11 +347,11 @@ h3 {
 
 .card-kicker {
   margin: 0 0 0.55rem;
-  color: var(--brand);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  color: var(--gold-deep);
   font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .card-content p:not(.card-kicker) {
@@ -301,8 +359,10 @@ h3 {
 }
 
 .visit-link {
+  align-self: flex-start;
   margin-top: auto;
-  color: var(--brand);
+  border-bottom: 2px solid rgba(201, 154, 61, 0.38);
+  color: var(--gold-deep);
   font-weight: 900;
 }
 
@@ -315,7 +375,7 @@ h3 {
 
 .about > p {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 1.2rem;
 }
 
@@ -338,24 +398,25 @@ h3 {
 .contact-form label {
   display: grid;
   gap: 0.45rem;
+  color: var(--ink);
   font-weight: 800;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(31, 26, 18, 0.18);
   border-radius: 18px;
   padding: 0.9rem 1rem;
   font: inherit;
   color: var(--ink);
-  background: #fbfaf7;
+  background: #fffdfa;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 3px solid rgba(37, 71, 208, 0.18);
-  border-color: var(--brand);
+  outline: 3px solid rgba(220, 129, 42, 0.2);
+  border-color: var(--orange-gold);
 }
 
 .form-status {
@@ -368,12 +429,35 @@ h3 {
 .site-footer {
   padding: 2rem 1.25rem;
   text-align: center;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
+  color: #d8c9ac;
+  background: #11100d;
+  border-top: 1px solid var(--hero-border);
 }
 
 .site-footer p {
   margin: 0.15rem 0;
+}
+
+.under-construction-shell {
+  min-height: calc(100vh - 9rem);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(220, 129, 42, 0.18), transparent 24rem),
+    linear-gradient(135deg, #080706 0%, var(--hero) 55%, #21170d 100%);
+  color: #fff8e8;
+}
+
+.under-construction-media {
+  min-height: 18rem;
+  overflow: hidden;
+  border: 1px solid var(--hero-border);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+.under-construction-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 820px) {
@@ -399,6 +483,10 @@ h3 {
     min-height: auto;
   }
 
+  .businesses {
+    padding: 3.5rem 1.25rem;
+  }
+
   .business-grid {
     grid-template-columns: 1fr;
   }
@@ -412,6 +500,7 @@ h3 {
 
   .nav-links a {
     font-size: 0.95rem;
+    padding-inline: 0.35rem;
   }
 
   .hero,
@@ -426,16 +515,4 @@ h3 {
   .contact-form {
     padding: 1.15rem;
   }
-}
-
-.under-construction-media {
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  min-height: 18rem;
-}
-
-.under-construction-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
